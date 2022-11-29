@@ -13,3 +13,5 @@ My Documentation:
 - After that, I wrote code to pring the details from MYAPI file to read in the java output.
 
 - Also,I done search from file for get string  which is user input.
+
+- I try to write code to search for multiple strings and unique but it is not Success until now.

@@ -112,6 +112,7 @@ public class EvalClass {
 	                }
 	            }
 	        } catch (IOException e) {
+	        	e.printStackTrace();
 	            System.out.println("Not available in the source: " + file1.toString());
 	        }
 	        
