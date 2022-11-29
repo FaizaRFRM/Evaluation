@@ -1,0 +1,15 @@
+My Documentation:
+======================
+-I create new project in E-Clips by name "EvaluationTask".
+
+- Then, I create the main class by name EvalClass.java.
+
+- In the main class I was create menue for many choices to choose one option from the task by using Switch loop.
+
+- I consume my API Link.
+
+- Then, I write a code in java project to create file by name MYAPI and print the details from ApI to the file.
+
+- After that, I wrote code to pring the details from MYAPI file to read in the java output.
+
+- Also,I done search from file for get string  which is user input.
