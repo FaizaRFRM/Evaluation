@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -28,11 +29,16 @@ public class EvalClass {
 	    System.out.println("4-Exit");
 	    System.out.println("========================================================\n");
 	    
-	    
+//****************************************************************************************************************************************************	    
 	    
 	    int option;
 	    option=sa.nextInt();
 	    switch(option) {
+	    
+	    
+	    
+	    
+	    
 	    case 1:
 	    	HttpClient client = HttpClient.newHttpClient();
 		    HttpRequest request = HttpRequest.newBuilder()
@@ -46,6 +52,11 @@ public class EvalClass {
 			System.out.println(fileF);
 			System.out.println("========================================================\n");
 	    	break;
+	    	
+	    	
+	    	
+//****************************************************************************************************************************************************	    	    	
+	    	
 	    	
 	    	
 	    	
@@ -88,34 +99,147 @@ public class EvalClass {
    	   }
 	    	System.out.println("========================================================\n");
 	    	break;
+	    
+//****************************************************************************************************************************************************	    	    	
+	    	
+	    	
+	    	
+	    	
+	    	
 	    	
 	    	
 	    case 3:
 	    	
-	    	 File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
+	    	boolean isExit=true;
+        	while (isExit) {
+        		 try {
+        		File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
 
-	         Scanner sc = new Scanner(System.in);
-
-	        System.out.println("enter words you want to search");
-	        String name = sc.next();
-	        System.out.println("========================================================");
-	        Scanner scanner;
-	        try {
-	            scanner = new Scanner(file1).useDelimiter( ",");
-
-	            while (scanner.hasNext()) {
-	                final String lineFromFile = scanner.nextLine();
-	                if (lineFromFile.contains(name)) {
-	                    System.out.println("It is Available " + name);
+	       
+	       
+	            
+	            ArrayList <String> listOfWords= new ArrayList<String>();
+	            System.out.println("enter words you want to search");
+	            System.out.println("========================================================");
+            	String word = sa.next();
+            	 Scanner scanner;
+            	scanner = new Scanner(file1).useDelimiter( ",");
+	            String lineFromFile = scanner.nextLine();
+            	while (scanner.hasNext()) {
+	            for(String s:listOfWords) {
+	                if (lineFromFile.contains(word)) {
+	                    System.out.println("It is Available " + word);
 	                    System.out.println("***********************");
 	                    break;
 	                }
-	            }
-	        } catch (IOException e) {
+//	                else {
+//	            	System.out.println("Not available in the source:" + "   "+file1.toString());
+//	    	        System.out.println("***********************");
+//	    	        break;
+//	            }
+            	}
+            	}
+	        } catch (Exception e) {
 	        	e.printStackTrace();
-	            System.out.println("Not available in the source: " + file1.toString());
+//	            System.out.println("Not available in the source: " + file1.toString());
 	        }
 	        
+	        System.out.println("if you want to input more words press 0");	
+        	int number=sa.nextInt();
+        	if(number == 0) {
+        		isExit=true;
+        	}else {
+        		isExit=false;
+        	}
+    	}
+	    	break;
+	    	
+	    	
+//****************************************************************************************************************************************************	    	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	     case 4:
+            System.out.println("program is Exit");
+
+	    	System.exit(0);
+	    	break;
+	    	
+//****************************************************************************************************************************************************	    	    	
+
+	    	
+	    	
+	      }
+		}
+	      exit=false;
+	  }
+    	catch(Exception e) {
+		 System.out.println(e);
+	   }
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	        
 	        
 //**********************************************************************	        
@@ -251,18 +375,4 @@ public class EvalClass {
 //	          System.out.println(" cannot write to file " + file.toString());
 //	      }
 //****************************************************
-	    	break;
-	    case 4:
-            System.out.println("program is Exit");
 
-	    	System.exit(0);
-	    	break;
-	    }
-		}
-	exit=false;
-		 }
-	catch(Exception e) {
-		System.out.println(e);
-	   }
-	}
-}
