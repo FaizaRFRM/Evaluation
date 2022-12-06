@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class EvalClass {
 
 	public static void main(String[] args) throws IOException {
-		boolean ex = true;
+//		boolean ex = true;
 		try {
 			boolean exit = true;
 			while (exit) {
@@ -26,7 +26,7 @@ public class EvalClass {
 				System.out.println("1-consume ApI");
 				System.out.println("2-Write response  a file");
 				System.out.println("3-search from file");
-				System.out.println("4-Exit");
+				System.out.println("5-Exit");
 				System.out.println("========================================================\n");
 
 //****************************************************************************************************************************************************	    
@@ -89,86 +89,71 @@ public class EvalClass {
 //****************************************************************************************************************************************************	    	    	
 
 				case 3:
-				    String[] words=null;  
-				     
-				       
-			        System.out.println("Enter the number of words:");
-			        Integer n = sa.nextInt();
-			       
-			       
-			        List<String> wordsList=new ArrayList<>();
-			        String wordsArray[] = new String[n];
-			        System.out.println("Enter words:");
-			       
-			       
-			        for(int i=0; i<n; i++)  
-			        {
-			            String wordss=sa.next();
-			           wordsList.add(wordss);
-			        }
+					String[] words = null;
 
-			         System.out.println( wordsList);
-			      for(String list:  wordsList) {
-			      FileReader fileread = new FileReader("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");  
-			           BufferedReader bufferread = new BufferedReader(fileread );
-			           
-			           String s;    
-			           int count=0;
-			            while((s=bufferread.readLine())!=null)
-			        {
-			          {
-			           words=s.split(" ");
-			           
-			            for (String word : words)
-			            {
-			                   if (word.contains(list))
-			                   {
-			                     count++;
-			                   }
-			            }
-			           
-			        if(count == 1)
-			        {
-			        System.out.println(list + " is unique in file ");
-			        }
-			       
-			        else if (count == 0)
-			        {
-			           System.out.println(list+ "  " + "The word is not present in the file");
-			        }
-			        else
-			        {
-			           System.out.println(list +"  "+"The word is present in the file "+ count +" times");
-			        }
-			        }
-			         
-			           }
-			            fileread .close();
-			      }    
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+					System.out.println("Enter the number of words:");
+					Integer n = sa.nextInt();
+					File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
+					try {
+
+						List<String> wordsList = new ArrayList<>();
+						String wordsArray[] = new String[n];
+						System.out.println("Enter words:");
+
+						for (int i = 0; i < n; i++) {
+							String wordss = sa.next();
+							wordsList.add(wordss);
+						}
+
+						System.out.println(wordsList);
+						for (String list : wordsList) {
+							FileReader fileread = new FileReader(
+									"C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
+							try (BufferedReader bufferread = new BufferedReader(fileread)) {
+								String s;
+								int count = 0;
+								while ((s = bufferread.readLine()) != null) {
+									{
+										words = s.split(" ");
+
+										for (String word : words) {
+											if (word.contains(list)) {
+												System.out.println("It is Available " + word);
+												System.out.println("***********************");
+
+												if (count == 1) {
+													System.out.println(list + " is unique in file ");
+													System.out.println(
+															"========================================================");
+													break;
+												} else {
+													System.out.println(list + "  " + "The word is not present in the file");
+													System.out.println(
+															"========================================================");
+													break;
+												}
+												
+											}
+										}
+									}
+								}
+							}
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+						System.out.println("Not available in the source: " + file1.toString());
+					}
+//			       
+
+//			        else
+//			        {
+//			           System.out.println(list +"  "+"The word is present in the file "+ count +" times");
+//			           System.out.println("========================================================");
+//			        }
+//			        }
+
+//			            fileread .close();
+
 //					boolean isExit = true;
 //					while (isExit) {
 //						File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
@@ -209,6 +194,27 @@ public class EvalClass {
 //****************************************************************************************************************************************************	    	    	
 
 				case 4:
+					try {
+						File read = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.pdf");
+						Scanner Reader = new Scanner(read);
+						System.out.println("========================================================");
+						System.out.println("Reading pdf file");
+						System.out.println("========================================================");
+						while (Reader.hasNextLine()) {
+							String details = Reader.nextLine();
+
+							System.out.println(details);
+						}
+						Reader.close();
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
+					System.out.println("========================================================\n");
+					break;
+
+//****************************************************************************************************************************************************
+
+				case 5:
 					System.out.println("program is Exit");
 
 					System.exit(0);
