@@ -120,29 +120,36 @@ public class EvalClass {
 											if (word.contains(list)) {
 												System.out.println("It is Available " + word);
 												System.out.println("***********************");
+											}
 
 												if (count == 1) {
 													System.out.println(list + " is unique in file ");
 													System.out.println(
 															"========================================================");
 													break;
-												} else {
-													System.out.println(list + "  " + "The word is not present in the file");
-													System.out.println(
-															"========================================================");
-													break;
-												}
-												
+												} 
 											}
 										}
 									}
 								}
 							}
-						}
 					} catch (Exception e) {
 						e.printStackTrace();
 						System.out.println("Not available in the source: " + file1.toString());
 					}
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 //			       
 
 //			        else
@@ -194,11 +201,30 @@ public class EvalClass {
 //****************************************************************************************************************************************************	    	    	
 
 				case 4:
+					HttpClient client2 = HttpClient.newHttpClient();
+					HttpRequest request2 = HttpRequest.newBuilder()
+							.uri(URI.create("https://ipinfo.io/161.185.160.93/geo")).build();
+					HttpResponse<String> response2 = client2.send(request2, HttpResponse.BodyHandlers.ofString());
+
+					String file2 = response2.body();
+					try {
+						FileWriter writerFile = new FileWriter(
+								"C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.pdf");
+						writerFile.write(file2);
+						writerFile.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					System.out.println("JSON file was created it iclude:");
+					System.out.println("==================================");
+					System.out.println(file2);
+					System.out.println("========================================================\n");
+
 					try {
 						File read = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.pdf");
 						Scanner Reader = new Scanner(read);
 						System.out.println("========================================================");
-						System.out.println("Reading pdf file");
+						System.out.println("Reading file");
 						System.out.println("========================================================");
 						while (Reader.hasNextLine()) {
 							String details = Reader.nextLine();
