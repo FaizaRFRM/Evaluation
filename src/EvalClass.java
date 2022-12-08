@@ -9,6 +9,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -122,106 +124,49 @@ public class EvalClass {
 												System.out.println("***********************");
 											}
 
-												if (count == 1) {
-													System.out.println(list + " is unique in file ");
-													System.out.println(
-															"========================================================");
-													break;
-												} 
+											if (count == 1) {
+												System.out.println(list + " is unique in file ");
+												System.out.println(
+														"========================================================");
+												break;
 											}
 										}
 									}
 								}
 							}
+						}
 					} catch (Exception e) {
 						e.printStackTrace();
-						System.out.println("Not available in the source: " + file1.toString());
+//						System.out.println("Not available in the source: " + file1.toString());
 					}
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-//			       
-
-//			        else
-//			        {
-//			           System.out.println(list +"  "+"The word is present in the file "+ count +" times");
-//			           System.out.println("========================================================");
-//			        }
-//			        }
-
-//			            fileread .close();
-
-//					boolean isExit = true;
-//					while (isExit) {
-//						File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
-//						try {
-//							
-//
-//							ArrayList<String> listOfWords = new ArrayList<String>();
-//							System.out.println("enter words you want to search");
-//							System.out.println("========================================================");
-//							String word = sa.next();
-//							Scanner scanner;
-//							scanner = new Scanner(file1).useDelimiter(",");
-////							String lineFromFile = scanner.nextLine();
-//							while (scanner.hasNext()) {
-//								for (String s : listOfWords) {
-//									if (scanner.contains(word)) {
-//										System.out.println("It is Available " + word);
-//										System.out.println("***********************");
-//										break;
-//									}
-//								}
-//							}
-//						} catch (Exception e) {
-//							e.printStackTrace();
-//	            System.out.println("Not available in the source: " + file1.toString());
-//						}
-//
-//						System.out.println("if you want to input more words press 0");
-//						int number = sa.nextInt();
-//						if (number == 0) {
-//							isExit = true;
-//						} else {
-//							isExit = false;
-//						}
-//					}
 					break;
 
 //****************************************************************************************************************************************************	    	    	
 
 				case 4:
+//					
 					HttpClient client2 = HttpClient.newHttpClient();
 					HttpRequest request2 = HttpRequest.newBuilder()
-							.uri(URI.create("https://ipinfo.io/161.185.160.93/geo")).build();
+							.uri(URI.create("https://ipinfo.io/161.185.160.93/geo"))
+							.build();
 					HttpResponse<String> response2 = client2.send(request2, HttpResponse.BodyHandlers.ofString());
 
 					String file2 = response2.body();
 					try {
 						FileWriter writerFile = new FileWriter(
-								"C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.pdf");
+								"C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\APIPDF.pdf");
 						writerFile.write(file2);
 						writerFile.close();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					System.out.println("JSON file was created it iclude:");
+					System.out.println("PDF file was created it iclude:");
 					System.out.println("==================================");
 					System.out.println(file2);
 					System.out.println("========================================================\n");
 
 					try {
-						File read = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.pdf");
+						File read = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\APIPDF.pdf");
 						Scanner Reader = new Scanner(read);
 						System.out.println("========================================================");
 						System.out.println("Reading file");
@@ -236,8 +181,16 @@ public class EvalClass {
 						e.printStackTrace();
 					}
 					System.out.println("========================================================\n");
-					break;
+					try {
+			            Files.move(Paths.get("C:\\Users\\user16\\Desktop\\New folder\\APIPDF.pdf"),
+			                    Paths.get("C:\\Users\\user16\\Desktop\\New folder\\APIPDF.pdf"));
 
+			            System.out.println("Successfully moved file");
+			        } catch (IOException e) {
+			            e.printStackTrace();
+			        }
+					break;
+					
 //****************************************************************************************************************************************************
 
 				case 5:
@@ -256,6 +209,55 @@ public class EvalClass {
 		}
 	}
 }
+
+//***************************************************************************
+//######################this is the solutions I tried to serch multy words from file#################
+//
+
+// else
+// {
+//    System.out.println(list +"  "+"The word is present in the file "+ count +" times");
+//    System.out.println("========================================================");
+// }
+// }
+
+//     fileread .close();
+
+//	boolean isExit = true;
+//	while (isExit) {
+//		File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
+//		try {
+//			
+//
+//			ArrayList<String> listOfWords = new ArrayList<String>();
+//			System.out.println("enter words you want to search");
+//			System.out.println("========================================================");
+//			String word = sa.next();
+//			Scanner scanner;
+//			scanner = new Scanner(file1).useDelimiter(",");
+////			String lineFromFile = scanner.nextLine();
+//			while (scanner.hasNext()) {
+//				for (String s : listOfWords) {
+//					if (scanner.contains(word)) {
+//						System.out.println("It is Available " + word);
+//						System.out.println("***********************");
+//						break;
+//					}
+//				}
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//System.out.println("Not available in the source: " + file1.toString());
+//		}
+//
+//		System.out.println("if you want to input more words press 0");
+//		int number = sa.nextInt();
+//		if (number == 0) {
+//			isExit = true;
+//		} else {
+//			isExit = false;
+//		}
+//	}
 
 //**********************************************************************	        
 //	    	    File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
