@@ -11,6 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -86,65 +87,10 @@ public class EvalClass {
 						e.printStackTrace();
 					}
 					System.out.println("========================================================\n");
-					break;
-
-//****************************************************************************************************************************************************	    	    	
-
-				case 3:
-					String[] words = null;
-
-					System.out.println("Enter the number of words:");
-					Integer n = sa.nextInt();
-					File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
-					try {
-
-						List<String> wordsList = new ArrayList<>();
-						String wordsArray[] = new String[n];
-						System.out.println("Enter words:");
-
-						for (int i = 0; i < n; i++) {
-							String wordss = sa.next();
-							wordsList.add(wordss);
-						}
-
-						System.out.println(wordsList);
-						for (String list : wordsList) {
-							FileReader fileread = new FileReader(
-									"C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
-							try (BufferedReader bufferread = new BufferedReader(fileread)) {
-								String s;
-								int count = 0;
-								while ((s = bufferread.readLine()) != null) {
-									{
-										words = s.split(" ");
-
-										for (String word : words) {
-											if (word.contains(list)) {
-												System.out.println("It is Available " + word);
-												System.out.println("***********************");
-											}
-
-											if (count == 1) {
-												System.out.println(list + " is unique in file ");
-												System.out.println(
-														"========================================================");
-												break;
-											}
-										}
-									}
-								}
-							}
-						}
-					} catch (Exception e) {
-						e.printStackTrace();
-//						System.out.println("Not available in the source: " + file1.toString());
-					}
-					break;
-
-//****************************************************************************************************************************************************	    	    	
-
-				case 4:
-//					
+					
+					
+					
+					
 					HttpClient client2 = HttpClient.newHttpClient();
 					HttpRequest request2 = HttpRequest.newBuilder()
 							.uri(URI.create("https://ipinfo.io/161.185.160.93/geo"))
@@ -181,14 +127,118 @@ public class EvalClass {
 						e.printStackTrace();
 					}
 					System.out.println("========================================================\n");
-					try {
-			            Files.move(Paths.get("C:\\Users\\user16\\Desktop\\New folder\\APIPDF.pdf"),
-			                    Paths.get("C:\\Users\\user16\\Desktop\\New folder\\APIPDF.pdf"));
+					break;
 
-			            System.out.println("Successfully moved file");
-			        } catch (IOException e) {
-			            e.printStackTrace();
-			        }
+//****************************************************************************************************************************************************	    	    	
+
+				case 3:
+					String[] words = null;
+
+					System.out.println("Enter the number of words:");
+					Integer n = sa.nextInt();
+					File file1 = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
+					try {
+
+						List<String> wordsList = new ArrayList<>();
+						String wordsArray[] = new String[n];
+						System.out.println("Enter words:");
+
+						for (int i = 0; i < n; i++) {
+							String wordss = sa.next();
+							wordsList.add(wordss);
+						}
+
+						System.out.println(wordsList);
+						for (String list : wordsList) {
+							FileReader fileread = new FileReader(
+									"C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\MYAPI.txt");
+							try (BufferedReader bufferread = new BufferedReader(fileread)) {
+								String s;
+								int count = 0;
+								while ((s = bufferread.readLine()) != null) {
+									{
+										words = s.split(" ");
+
+										for (String word : words) {
+											if (word.contains(list)) {
+												System.out.println("It is Available " + word);
+												System.out.println("***********************\n");
+											}
+											
+											if (count == 1) {
+												System.out.println(list + " is unique in file ");
+												System.out.println(
+														"========================================================");
+												try {
+										            Files.move(Paths.get("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\APIPDF.pdf"),
+										                    Paths.get("C:\\Users\\user16\\Desktop\\New folder\\APIPDF.pdf"), StandardCopyOption.REPLACE_EXISTING);
+
+										            System.out.println("Successfully moved file");
+										        } catch (IOException e) {
+										            e.printStackTrace();
+										        }
+												
+												break;
+											}
+										}
+									}
+								}
+							}
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+//						System.out.println("Not available in the source: " + file1.toString());
+					}
+					break;
+
+//****************************************************************************************************************************************************	    	    	
+
+				case 4:
+//					
+//					HttpClient client2 = HttpClient.newHttpClient();
+//					HttpRequest request2 = HttpRequest.newBuilder()
+//							.uri(URI.create("https://ipinfo.io/161.185.160.93/geo"))
+//							.build();
+//					HttpResponse<String> response2 = client2.send(request2, HttpResponse.BodyHandlers.ofString());
+//
+//					String file2 = response2.body();
+//					try {
+//						FileWriter writerFile = new FileWriter(
+//								"C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\APIPDF.pdf");
+//						writerFile.write(file2);
+//						writerFile.close();
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
+//					System.out.println("PDF file was created it iclude:");
+//					System.out.println("==================================");
+//					System.out.println(file2);
+//					System.out.println("========================================================\n");
+//
+//					try {
+//						File read = new File("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\APIPDF.pdf");
+//						Scanner Reader = new Scanner(read);
+//						System.out.println("========================================================");
+//						System.out.println("Reading file");
+//						System.out.println("========================================================");
+//						while (Reader.hasNextLine()) {
+//							String details = Reader.nextLine();
+//
+//							System.out.println(details);
+//						}
+//						Reader.close();
+//					} catch (FileNotFoundException e) {
+//						e.printStackTrace();
+//					}
+//					System.out.println("========================================================\n");
+//					try {
+//			            Files.move(Paths.get("C:\\Users\\user16\\eclipse-workspace\\taskFaiza\\APIPDF.pdf"),
+//			                    Paths.get("C:\\Users\\user16\\Desktop\\New folder\\APIPDF.pdf"));
+//
+//			            System.out.println("Successfully moved file");
+//			        } catch (IOException e) {
+//			            e.printStackTrace();
+//			        }
 					break;
 					
 //****************************************************************************************************************************************************
